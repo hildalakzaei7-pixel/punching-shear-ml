@@ -35,8 +35,9 @@ to give `source_id`, the grouping key for cross-validation.
 * 113 with shear reinforcement, 159 with fibres.
 * **Plain slabs (no shear reinforcement, no fibres): 271 tests, 51 sources.**
   Failure mode: 141 punching (S), 9 flexural (F), 121 not stated.
-* **Core modelling set** = plain slabs, excluding F, with d, b, f_c, ρ_l, load radius and V_test present:
-  **228 tests from 41 sources** (184 square, 44 circular columns), 87 of them with unreported failure mode.
+* **Core modelling set** = plain slabs, excluding F and the manual exclusions below, with d, b, f_c, ρ_l,
+  load radius and V_test present: **205 tests from 38 sources** (161 square, 44 circular columns),
+  87 of them with unreported failure mode.
 * No exact duplicate rows. No physically implausible f_c or ρ values.
 
 ## Cleaning decisions
@@ -46,4 +47,12 @@ to give `source_id`, the grouping key for cross-validation.
 3. Keep tests with blank failure mode (they include classic punching series such as Elstner & Hognestad
    1956 and Guandalini 2006), but flag them and report a sensitivity run without them.
 4. `fy` is not a model input (21 % missing in the core set; EC2 v_Rd,c does not use it).
-5. Grouped cross-validation uses `source_id`: no test series appears in both training and test folds.
+5. **Manual exclusions (44 rows)** after reading every reference title and specimen name. The sheet's
+   columns describe these as plain slabs, but they are not:
+   * Sissakis & Sheikh (2007): CFRP-strengthened specimens; only the three "Control" slabs are kept.
+   * Binici & Bayrak (2003): CFRP strengthening study; the two specimens could not be confirmed as controls.
+   * Siburg (2014), DF series: footing tests (r/d = 1.5–2.3), outside the flat-slab scope.
+   * Theodorakopoulos & Swamy (1989): lightweight aggregate concrete.
+   Meisami et al. (2013) was checked as well: its CFRP strengthening is coded as ρw, so the automatic
+   filter already keeps only the two unstrengthened slabs.
+6. Grouped cross-validation uses `source_id`: no test series appears in both training and test folds.

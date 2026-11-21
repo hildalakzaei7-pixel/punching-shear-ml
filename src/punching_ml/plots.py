@@ -82,7 +82,7 @@ def cv_bars(table: pd.DataFrame, path: Path, metric="log_RMSE"):
     ax.invert_yaxis()
     ax.set_xlim(0, t.max().max() * 1.18)
     ax.set(xlabel="RMS of ln(V_test / V_pred), lower is better (≈ CoV)")
-    ax.set_title("Random splits flatter data-driven models; grouped splits reverse the ranking", pad=26)
+    ax.set_title("Random splits flatter data-driven models; grouped splits change the ranking", pad=26)
     ax.legend(loc="lower left", bbox_to_anchor=(-0.01, 1.0), ncol=2, fontsize=9)
     ax.grid(axis="y", visible=False)
     save(fig, path)
@@ -99,7 +99,7 @@ def ratio_vs_d(df: pd.DataFrame, preds: dict, path: Path):
         a.set_title(f"{name}\nmean {r.mean():.2f} · CoV {cov:.2f}", fontsize=9.5)
         a.set_xlabel("d (mm)")
     axes[0].set_ylabel("V_test / V_pred (grouped CV)")
-    fig.suptitle("Size effect: tree models trained on force cannot extrapolate to thick slabs",
+    fig.suptitle("Grouped CV, one repeat: tree models trained on force under-predict the few thick slabs",
                  x=0.01, ha="left", fontweight="bold", y=1.08)
     save(fig, path)
 

@@ -101,4 +101,4 @@ def test_real_file_profile():
     from punching_ml.data import read_sheet
     full = read_sheet()
     assert len(full) == 543 and full[GROUP].nunique() == 54
-    assert len(core_set(full)) == 228
+    assert len(core_set(full)) == 205

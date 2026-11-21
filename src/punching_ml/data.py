@@ -62,10 +62,28 @@ def parse(raw: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+# Tests that the sheet's columns describe as plain slabs but are not, found by reading the
+# reference titles and specimen names (audit of 21 Nov 2026). (reference prefix, specimen regex, reason)
+MANUAL_EXCLUSIONS = [
+    ("Sissakis, K., & Sheikh", r"^(?!Control)", "CFRP-strengthened specimens; only the 'Control' slabs are plain"),
+    ("Binici, B., & Bayrak", r".*", "CFRP strengthening study; control status of the specimens not verifiable"),
+    ("Siburg, C. (2014)", r"^DF", "DF series are footing tests (r/d = 1.5-2.3), outside the flat-slab scope"),
+    ("Theodorakopoulos, D. D.", r".*", "lightweight aggregate concrete; EC2 needs the eta_1 factor"),
+]
+
+
+def manual_exclusion_mask(df: pd.DataFrame) -> pd.Series:
+    m = pd.Series(False, index=df.index)
+    for ref, spec, _ in MANUAL_EXCLUSIONS:
+        m |= df["reference"].str.startswith(ref) & df["specimen"].astype(str).str.match(spec)
+    return m
+
+
 def core_set(df: pd.DataFrame, drop_unknown_mode: bool = False) -> pd.DataFrame:
     """Interior slab-column tests without shear reinforcement or fibres, not flexural failures,
     with all model inputs present. See data/DATA_DICTIONARY.md for the rationale."""
     m = ~df["has_shear_reinf"] & ~df["has_fibres"] & (df["failure_mode"] != "F")
+    m &= ~manual_exclusion_mask(df)
     if drop_unknown_mode:
         m &= ~df["mode_unknown"]
     m &= df["column_type"].isin(["c", "s"])

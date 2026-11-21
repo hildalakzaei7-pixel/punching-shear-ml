@@ -110,7 +110,7 @@ def run(fast: bool = False) -> dict:
         a.scatter(xv, r_ec2, s=12, color=plots.BLUE, alpha=0.7, edgecolor=plots.SURFACE, linewidth=0.4)
         a.axhline(1, color=plots.INK2, linestyle="--", linewidth=1)
         a.axvline(cap, color=plots.ORANGE, linewidth=1.5)
-        a.text(cap, 0.43, " " + cap_lab, color=plots.INK, fontsize=8.5, va="bottom")
+        a.text(cap, 0.43, cap_lab + " ", color=plots.INK, fontsize=8.5, va="bottom", ha="right")
         a.set(xlabel=lab, ylabel="V_test / V_EC2 (mean values)", ylim=(0.4, 2.0))
     plots.logx(ax[0], [50, 100, 200, 400])
     ax[0].set_title("EC2 is most conservative for thin slabs")
