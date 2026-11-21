@@ -1,0 +1,201 @@
+{
+  "dataset": {
+    "tests_in_sheet": 543,
+    "sources_in_sheet": 54,
+    "core_tests": 228,
+    "core_sources": 41,
+    "core_unknown_mode": 87,
+    "square": 184,
+    "circular": 44
+  },
+  "cv_grouped": {
+    "EC2 (mean values)": {
+      "R2": 0.9161,
+      "ratio_mean": 1.1732,
+      "ratio_CoV": 0.1964,
+      "unsafe_%": 24.1228,
+      "log_RMSE": 0.2415,
+      "log_RMSE_sd": 0.0
+    },
+    "EC2 (C refitted)": {
+      "R2": 0.9305,
+      "ratio_mean": 1.0195,
+      "ratio_CoV": 0.2022,
+      "unsafe_%": 49.5614,
+      "log_RMSE": 0.2016,
+      "log_RMSE_sd": 0.0017
+    },
+    "Power law (log-linear)": {
+      "R2": 0.9494,
+      "ratio_mean": 1.0074,
+      "ratio_CoV": 0.1957,
+      "unsafe_%": 53.2456,
+      "log_RMSE": 0.1928,
+      "log_RMSE_sd": 0.0044
+    },
+    "Random forest": {
+      "R2": 0.5478,
+      "ratio_mean": 1.1241,
+      "ratio_CoV": 0.4102,
+      "unsafe_%": 43.8596,
+      "log_RMSE": 0.3308,
+      "log_RMSE_sd": 0.0347
+    },
+    "XGBoost": {
+      "R2": 0.6087,
+      "ratio_mean": 1.1055,
+      "ratio_CoV": 0.3393,
+      "unsafe_%": 43.2456,
+      "log_RMSE": 0.2809,
+      "log_RMSE_sd": 0.0347
+    },
+    "XGBoost (stress target)": {
+      "R2": 0.8701,
+      "ratio_mean": 1.0478,
+      "ratio_CoV": 0.2239,
+      "unsafe_%": 47.7193,
+      "log_RMSE": 0.2201,
+      "log_RMSE_sd": 0.0071
+    },
+    "EC2 + XGBoost correction": {
+      "R2": 0.9338,
+      "ratio_mean": 1.0279,
+      "ratio_CoV": 0.1945,
+      "unsafe_%": 48.1579,
+      "log_RMSE": 0.1946,
+      "log_RMSE_sd": 0.0101
+    }
+  },
+  "cv_random": {
+    "EC2 (mean values)": {
+      "R2": 0.9161,
+      "ratio_CoV": 0.1964,
+      "log_RMSE": 0.2415
+    },
+    "EC2 (C refitted)": {
+      "R2": 0.9322,
+      "ratio_CoV": 0.1979,
+      "log_RMSE": 0.1976
+    },
+    "Power law (log-linear)": {
+      "R2": 0.9588,
+      "ratio_CoV": 0.1799,
+      "log_RMSE": 0.1781
+    },
+    "Random forest": {
+      "R2": 0.8167,
+      "ratio_CoV": 0.2119,
+      "log_RMSE": 0.2079
+    },
+    "XGBoost": {
+      "R2": 0.8759,
+      "ratio_CoV": 0.1825,
+      "log_RMSE": 0.1831
+    },
+    "XGBoost (stress target)": {
+      "R2": 0.9311,
+      "ratio_CoV": 0.1694,
+      "log_RMSE": 0.1654
+    },
+    "EC2 + XGBoost correction": {
+      "R2": 0.9567,
+      "ratio_CoV": 0.1536,
+      "log_RMSE": 0.1551
+    }
+  },
+  "nested_tuned_ec2_xgb": {
+    "R2": 0.9317,
+    "RMSE_kN": 183.8358,
+    "MAE_kN": 92.9526,
+    "ratio_mean": 1.028,
+    "ratio_CoV": 0.1902,
+    "unsafe_%": 47.9532,
+    "log_RMSE": 0.1902,
+    "R2_sd": 0.0238,
+    "log_RMSE_sd": 0.0153,
+    "ratio_CoV_sd": 0.0165
+  },
+  "sensitivity_known_mode_only": {
+    "EC2 (mean values)": {
+      "ratio_mean": 1.207,
+      "ratio_CoV": 0.205,
+      "log_RMSE": 0.259
+    },
+    "Power law (log-linear)": {
+      "ratio_mean": 1.012,
+      "ratio_CoV": 0.191,
+      "log_RMSE": 0.172
+    },
+    "EC2 + XGBoost correction": {
+      "ratio_mean": 1.048,
+      "ratio_CoV": 0.184,
+      "log_RMSE": 0.181
+    },
+    "n_tests": 141,
+    "n_sources": 28
+  },
+  "powerlaw_full_fit": {
+    "intercept": -6.3199261230961365,
+    "d": 0.6336940220582616,
+    "fc": 0.3677450213028963,
+    "rho_l": 0.3697488285255163,
+    "u1": 1.0857609710126612,
+    "r_over_d": -0.2584565087108661
+  },
+  "powerlaw_exponent_90CI": {
+    "d": {
+      "0.05": 0.105,
+      "0.95": 1.062
+    },
+    "fc": {
+      "0.05": 0.269,
+      "0.95": 0.423
+    },
+    "rho_l": {
+      "0.05": 0.313,
+      "0.95": 0.428
+    },
+    "u1": {
+      "0.05": 0.663,
+      "0.95": 1.671
+    },
+    "r_over_d": {
+      "0.05": -0.417,
+      "0.95": -0.145
+    }
+  },
+  "ec2_full_data": {
+    "R2": 0.9161,
+    "RMSE_kN": 205.729,
+    "MAE_kN": 103.8378,
+    "ratio_mean": 1.1732,
+    "ratio_CoV": 0.1964,
+    "unsafe_%": 24.1228,
+    "log_RMSE": 0.2415
+  },
+  "conformal_90": {
+    "EC2 (C refitted)": {
+      "coverage_mean": 0.9064329667045224,
+      "coverage_sd": 0.10506954400921785,
+      "factor_mean": 1.4718292441111112
+    },
+    "Power law (log-linear)": {
+      "coverage_mean": 0.9385972757744832,
+      "coverage_sd": 0.04485783237213976,
+      "factor_mean": 1.5368827585240787
+    },
+    "EC2 + XGBoost correction": {
+      "coverage_mean": 0.9278607934150791,
+      "coverage_sd": 0.057843350282744,
+      "factor_mean": 1.4570024988409
+    }
+  },
+  "shap_top": {
+    "r_over_d": 0.04740000143647194,
+    "r_load": 0.04670000076293945,
+    "rho_l": 0.026200000196695328,
+    "d": 0.02199999988079071,
+    "fc": 0.01720000058412552
+  },
+  "runtime_s": 179.8
+}

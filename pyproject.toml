@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "punching-shear-ml"
+version = "1.0.0"
+description = "Punching shear capacity of RC flat slabs: EC2 vs mechanics-based and machine-learning models under source-grouped validation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Hilda Lakzaei" }]
+dependencies = ["numpy>=1.26", "pandas>=2.0", "scipy>=1.11", "scikit-learn>=1.6", "xgboost>=2.0",
+                "shap>=0.45", "matplotlib>=3.8", "openpyxl>=3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 115
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
