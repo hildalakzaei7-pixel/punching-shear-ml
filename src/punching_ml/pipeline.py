@@ -17,6 +17,8 @@ from .evaluate import conformal_study, metrics, nested_tuned_oof, oof_prediction
 from .models import SEED, EC2Residual, Features, PowerLaw, build_models, xgb
 
 RESULTS = ROOT / "results"
+CONF_FILES = {"EC2 (C refitted)": "ec2_refitted", "Power law (log-linear)": "power_law",
+              "EC2 + XGBoost correction": "ec2_xgboost"}
 FIG = RESULTS / "figures"
 
 
@@ -123,7 +125,7 @@ def run(fast: bool = False) -> dict:
         c = conformal_study(build_models()[name], X, y, g, n_repeats=10 if fast else 30)
         conf[name] = {"coverage_mean": float(c.coverage.mean()), "coverage_sd": float(c.coverage.std()),
                       "factor_mean": float(c.factor.mean())}
-        c.to_csv(RESULTS / f"conformal_{name.split(' ')[0].lower()}_{len(name)}.csv", index=False)
+        c.to_csv(RESULTS / f"conformal_{CONF_FILES[name]}.csv", index=False)
     print("[conformal]", conf)
 
     best = "Power law (log-linear)"
